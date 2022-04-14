@@ -1,11 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
+import Picker from './src/componets/Picker';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <View style={styles.areaMoeda}>
+        <Text style={styles.titulo}>Selecione sua Moeda:</Text>
+        <Picker/>  
+      </View>
+      
     </View>
   );
 }
@@ -13,8 +18,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor:'#101215',
+    paddingTop: 40,
   },
 });
