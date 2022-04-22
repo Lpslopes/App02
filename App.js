@@ -1,9 +1,31 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 import Picker from './src/componets/Picker';
+import api from './src/service/api';
 
 export default function App() {
+  const [moedas,setMoedas] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const [moedaSelecionada, setMoedaSelecionada] = useState(null);
+  const [moedaBValor, setMoedaBValor] = useState(0);
+
+  useEffect(() => {
+
+    async function loadMoedas(){
+      const response = await api.get('all')
+      console.log(response.data);
+
+    }
+
+    loadMoedas();
+
+  },[]);
+  
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.areaMoeda}>
@@ -17,6 +39,7 @@ export default function App() {
         placeholder="Ex: 150"
         style={styles.input}
         keyboardType='numeric'
+        onChange={(valor) => setMoedaBValor(valor) }
         />
       </View>
 
